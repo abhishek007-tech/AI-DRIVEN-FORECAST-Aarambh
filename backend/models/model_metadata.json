@@ -1,0 +1,36 @@
+{
+  "model_name": "XGBoostClassifier",
+  "model_version": "0.2.0-mvp",
+  "bust_threshold": 20.0,
+  "moderate_risk_threshold": 0.4,
+  "high_risk_threshold": 0.7,
+  "feature_names": [
+    "forecast_rainfall",
+    "lead_day",
+    "temperature",
+    "humidity",
+    "pressure",
+    "wind_speed",
+    "ensemble_spread",
+    "latitude",
+    "longitude",
+    "historical_mean_abs_error",
+    "historical_bust_frequency",
+    "region_code"
+  ],
+  "region_map": {
+    "Central": 0,
+    "East": 1,
+    "North": 2,
+    "South": 3,
+    "West": 4
+  },
+  "train_start": "2026-01-01 00:00:00",
+  "train_end": "2026-05-05 00:00:00",
+  "validation_start": "2026-05-06 00:00:00",
+  "validation_end": "2026-06-02 00:00:00",
+  "test_start": "2026-06-03 00:00:00",
+  "test_end": "2026-06-29 00:00:00",
+  "data_mode": "DEMO/SYNTHETIC",
+  "validation_method": "Chronological train / validation / test split"
+}

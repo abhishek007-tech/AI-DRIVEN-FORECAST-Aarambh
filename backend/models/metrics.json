@@ -1,0 +1,105 @@
+{
+  "classification": {
+    "accuracy": 0.6244444444444445,
+    "precision": 0.18567493112947658,
+    "recall": 0.37993235625704624,
+    "f1": 0.24944485566247224,
+    "confusion_matrix": [
+      [
+        3035,
+        1478
+      ],
+      [
+        550,
+        337
+      ]
+    ],
+    "roc_auc": 0.5345985329616483
+  },
+  "forecast_error": {
+    "mae": 11.753789265204903,
+    "rmse": 16.85926961004848
+  },
+  "baseline": {
+    "accuracy": 0.8357407407407408,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "confusion_matrix": [
+      [
+        4513,
+        0
+      ],
+      [
+        887,
+        0
+      ]
+    ],
+    "roc_auc": 0.6379329812834325
+  },
+  "baseline_description": "Historical bust frequency by lead day, estimated from training period",
+  "evaluation_method": "Chronological held-out test period; no random shuffle",
+  "by_lead_day": [
+    {
+      "lead_day": 1,
+      "mean_bust_probability": 0.4478858411312103,
+      "historical_mean_absolute_error": 7.721034648750519,
+      "observed_bust_frequency": 0.07222222222222222
+    },
+    {
+      "lead_day": 2,
+      "mean_bust_probability": 0.43920037150382996,
+      "historical_mean_absolute_error": 8.314954141704506,
+      "observed_bust_frequency": 0.07407407407407407
+    },
+    {
+      "lead_day": 3,
+      "mean_bust_probability": 0.447904109954834,
+      "historical_mean_absolute_error": 10.577338837755299,
+      "observed_bust_frequency": 0.09814814814814815
+    },
+    {
+      "lead_day": 4,
+      "mean_bust_probability": 0.4467279613018036,
+      "historical_mean_absolute_error": 10.73744847791673,
+      "observed_bust_frequency": 0.13518518518518519
+    },
+    {
+      "lead_day": 5,
+      "mean_bust_probability": 0.4534398913383484,
+      "historical_mean_absolute_error": 12.220500750093699,
+      "observed_bust_frequency": 0.15185185185185185
+    },
+    {
+      "lead_day": 6,
+      "mean_bust_probability": 0.4660775363445282,
+      "historical_mean_absolute_error": 13.457215804984726,
+      "observed_bust_frequency": 0.1648148148148148
+    },
+    {
+      "lead_day": 7,
+      "mean_bust_probability": 0.47710779309272766,
+      "historical_mean_absolute_error": 14.152114168700718,
+      "observed_bust_frequency": 0.18888888888888888
+    },
+    {
+      "lead_day": 8,
+      "mean_bust_probability": 0.48625448346138,
+      "historical_mean_absolute_error": 14.774425579788003,
+      "observed_bust_frequency": 0.26296296296296295
+    },
+    {
+      "lead_day": 9,
+      "mean_bust_probability": 0.485056608915329,
+      "historical_mean_absolute_error": 15.559488200937286,
+      "observed_bust_frequency": 0.24444444444444444
+    },
+    {
+      "lead_day": 10,
+      "mean_bust_probability": 0.4710422158241272,
+      "historical_mean_absolute_error": 16.906100203549563,
+      "observed_bust_frequency": 0.25
+    }
+  ],
+  "data_label": "Illustrative demo-data evaluation"
+}

@@ -1,0 +1,14 @@
+[
+  "forecast_rainfall",
+  "lead_day",
+  "temperature",
+  "humidity",
+  "pressure",
+  "wind_speed",
+  "ensemble_spread",
+  "latitude",
+  "longitude",
+  "historical_mean_abs_error",
+  "historical_bust_frequency",
+  "region_code"
+]

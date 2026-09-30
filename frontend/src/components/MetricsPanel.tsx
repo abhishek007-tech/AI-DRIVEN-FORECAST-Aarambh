@@ -1,0 +1,14 @@
+import type {Metrics} from '../types';
+import {BarChart,Bar,XAxis,YAxis,Tooltip,ResponsiveContainer,LineChart,Line,CartesianGrid} from 'recharts';
+export default function MetricsPanel({m}:{m:Metrics|null}){
+ if(!m)return <div className="card">Metrics unavailable. Train the model first.</div>;
+ const c=m.classification, b=m.baseline;
+ const chart=[['Accuracy',c.accuracy],['Precision',c.precision],['Recall',c.recall],['F1',c.f1]].map(([name,value])=>({name,value}));
+ return <section className="verification"><div className="section-head"><div><span className="eyebrow">MODEL VERIFICATION</span><h2>Held-out test evaluation</h2></div><span className="demo-note">Illustrative demo-data evaluation</span></div>
+  <div className="metric-grid"><div className="card metric-card"><h3>Classification</h3><div className="metric-row">{chart.map(x=><div key={x.name as string}><b>{((x.value as number)*100).toFixed(1)}%</b><span>{x.name}</span></div>)}</div><p>ROC-AUC: {c.roc_auc==null?'N/A':c.roc_auc.toFixed(3)}</p></div>
+  <div className="card chart-card"><h3>Bust risk by lead day</h3><ResponsiveContainer width="100%" height={220}><LineChart data={m.by_lead_day}><CartesianGrid strokeDasharray="3 3"/><XAxis dataKey="lead_day" tickFormatter={v=>`D${v}`}/><YAxis domain={[0,1]} tickFormatter={v=>`${Math.round(v*100)}%`}/><Tooltip formatter={(v)=>`${(Number(v)*100).toFixed(1)}%`}/><Line type="monotone" dataKey="mean_bust_probability" stroke="#1459b8" strokeWidth={3} dot={false}/></LineChart></ResponsiveContainer></div>
+  <div className="card chart-card"><h3>Historical forecast error</h3><ResponsiveContainer width="100%" height={220}><BarChart data={m.by_lead_day}><CartesianGrid strokeDasharray="3 3"/><XAxis dataKey="lead_day" tickFormatter={v=>`D${v}`}/><YAxis/><Tooltip/><Bar dataKey="historical_mean_absolute_error" fill="#15988c" radius={[4,4,0,0]}/></BarChart></ResponsiveContainer></div>
+  <div className="card verification-card"><h3>Confusion matrix</h3><div className="matrix"><span>TN <b>{c.confusion_matrix[0]?.[0]??0}</b></span><span>FP <b>{c.confusion_matrix[0]?.[1]??0}</b></span><span>FN <b>{c.confusion_matrix[1]?.[0]??0}</b></span><span>TP <b>{c.confusion_matrix[1]?.[1]??0}</b></span></div><div className="error-metrics"><span>MAE <b>{m.forecast_error.mae.toFixed(2)} mm</b></span><span>RMSE <b>{m.forecast_error.rmse.toFixed(2)} mm</b></span></div></div></div>
+  <div className="baseline card"><div><h3>Baseline comparison</h3><p>{m.baseline_description}</p></div><div className="baseline-values"><span>ML F1 <b>{c.f1.toFixed(3)}</b></span><span>Baseline F1 <b>{b.f1.toFixed(3)}</b></span><span>ML Recall <b>{c.recall.toFixed(3)}</b></span><span>Baseline Recall <b>{b.recall.toFixed(3)}</b></span></div><small>Both are shown without declaring a winner. Demo results are not real weather skill.</small></div>
+ </section>
+}
